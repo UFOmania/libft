@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:39:37 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 22:21:05 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:35:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 		return (malloc(0));
-	p = malloc(count * size);
+	p = (void *)malloc(count * size);
 	if (p == 0)
 		return (0);
-	ft_bzero(p, size);
+	ft_bzero(p, count * size);
 	return (p);
 }
