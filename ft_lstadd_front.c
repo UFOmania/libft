@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:36:47 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 22:11:56 by massrayb         ###   ########.fr       */
+/*   Created: 2024/10/23 17:05:17 by massrayb          #+#    #+#             */
+/*   Updated: 2024/10/23 18:45:37 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void ft_lstadd_front(t_list **old, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (ft_strlen(src));
+	new->next = *old;
 }
 
-// int main(){
-// 	char d[3] = {""} ;
-// 	char d1[3] = {""} ;
-// 	char s[] = "abcdefghijklmnoqrstuvwxyz";
-// 	int a = strlcpy(d,s,3);
-// 	int b = ft_strlcpy(d1,s,3);
-// 	printf("org :-%s-\nmine:-%s-",d, d1);
-// }
+int main()
+{
+	t_list *head  = ft_lstnew("ab");
+	t_list *new_head = ft_lstnew('bc');
+	ft_lstadd_front(&head,new_head);
+	void *content;
+
+}

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:36:47 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 22:11:56 by massrayb         ###   ########.fr       */
+/*   Created: 2024/10/23 16:38:48 by massrayb          #+#    #+#             */
+/*   Updated: 2024/10/23 17:03:13 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+t_list *ft_lstnew(void *content)
 {
-	size_t	i;
+	t_list *node;
 
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (ft_strlen(src));
+	node = ft_calloc(1,sizeof(t_list));
+	if(node == 0)
+		return (0);
+	node->context = content;
+	return (node);
 }
 
-// int main(){
-// 	char d[3] = {""} ;
-// 	char d1[3] = {""} ;
-// 	char s[] = "abcdefghijklmnoqrstuvwxyz";
-// 	int a = strlcpy(d,s,3);
-// 	int b = ft_strlcpy(d1,s,3);
-// 	printf("org :-%s-\nmine:-%s-",d, d1);
+// int main()
+// {
+// 	t_list *list = ft_lstnew("ab");
+// 	ft_putstr_fd(list->context , 1);
 // }

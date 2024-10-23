@@ -6,16 +6,16 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:16:51 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 22:05:06 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/23 22:18:56 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	getindex(int number)
+static int	get_buffer_size(int number)
 {
-	int index;
+	int	index;
 
 	if (number < 0)
 	{
@@ -30,7 +30,7 @@ static int	getindex(int number)
 	return (index);
 }
 
-static char *converting(int nbr, char *dst, int size)
+static char	*converting(int nbr, char *dst, int size)
 {
 	if (nbr < 0)
 	{
@@ -43,7 +43,7 @@ static char *converting(int nbr, char *dst, int size)
 		nbr /= 10;
 		size--;
 	}
-	if (nbr <=9 && nbr >= 0)
+	if (nbr <= 9 && nbr >= 0)
 	{
 		dst[size] = nbr + '0';
 	}
@@ -53,25 +53,25 @@ static char *converting(int nbr, char *dst, int size)
 char	*ft_itoa(int n)
 {
 	char	*resault;
-	int		index;
+	int		buff_size;
 
-	index = getindex(n);
-	resault = (char *)malloc((sizeof(char) * index ) + 1);
+	buff_size = get_buffer_size(n);
+	resault = (char *)malloc((sizeof(char) * buff_size) + 1);
 	if (resault == 0)
-		return 0;
-	resault = converting(n, resault, index - 1);
-	resault[index] = '\0';
+		return (0);
+	resault = converting(n, resault, buff_size - 1);
+	resault[buff_size] = '\0';
 	return (resault);
 }
 
-// int main(){
-// 	char *s = ft_itoa(-123);
-// 	int i = 0;
-// 	// while(i < 10)
-// 	// {
-// 	// 	printf("%p\n",s[i]);
-// 	// 	i++;
-// 	// }
-// 	printf("resault = %s\n",s);
-// 	free(s);
-// }
+int main(){
+	char *s = ft_itoa(-123456);
+	int i = 0;
+	// while(i < 10)
+	// {
+	// 	printf("%p\n",s[i]);
+	// 	i++;
+	// }
+	printf("resault = %s\n",s);
+	free(s);
+}

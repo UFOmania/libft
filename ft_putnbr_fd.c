@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:36:47 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 22:11:56 by massrayb         ###   ########.fr       */
+/*   Created: 2024/10/23 16:21:04 by massrayb          #+#    #+#             */
+/*   Updated: 2024/10/23 16:28:19 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (src[i] && i < size - 1)
+	if(n == -2147483648)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_putstr_fd("-2147483648", fd);
 	}
-	dst[i] = 0;
-	return (ft_strlen(src));
+	else if ( n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + '0', fd);
+	}
+	else
+	{
+		ft_putchar_fd(n + '0', fd);
+	}
 }
 
-// int main(){
-// 	char d[3] = {""} ;
-// 	char d1[3] = {""} ;
-// 	char s[] = "abcdefghijklmnoqrstuvwxyz";
-// 	int a = strlcpy(d,s,3);
-// 	int b = ft_strlcpy(d1,s,3);
-// 	printf("org :-%s-\nmine:-%s-",d, d1);
+// int main()
+// {
+// 	ft_putnbr_fd(0,1);
 // }
