@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:50:35 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 15:38:54 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:11:02 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub = 0;
 	if (s[0] == 0)
 		return (0);
-	sub = (char *)malloc((len * sizeof(char)) + 1);
+	sub = (char *)malloc(((len + 1) * sizeof(char)));
 	if (sub == 0)
-		return (malloc(0));
-	ft_strlcpy(sub,s+start,len+1);	
+		return (0);
+	ft_strlcpy(sub, s + start, len + 1);
 	return (sub);
 }
 

@@ -6,15 +6,13 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:50:50 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 15:32:44 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:29:58 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
 	unsigned int	s_size;
@@ -28,9 +26,9 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	while (i < s_size)
 	{
 		resault[i] = f(i, s[i]);
-		i++;	
+		i++;
 	}
-	return (resault);		
+	return (resault);
 }
 
 // char *ff(unsigned int i , char c)

@@ -6,12 +6,11 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 15:22:02 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:02:14 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	get_strings_count(char *str, char c)
 {
@@ -34,7 +33,7 @@ static int	get_strings_count(char *str, char c)
 	return (num);
 }
 
-static char	*generate_string(char *s, int size, int *store_index)
+static char	*gen_str(char *s, int size, int *store_index)
 {
 	char	*tmp;
 
@@ -46,31 +45,38 @@ static char	*generate_string(char *s, int size, int *store_index)
 	return (tmp);
 }
 
+static void	initializer_variables(int *str_i, int *sps, int *start)
+{
+	*str_i = 0;
+	*sps = -1;
+	*start = 0;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**store;
-	int		string_i;
-	int		store_i;
+	int		str_i;
+	int		sps;
 	int		num_of_strings;
 	int		start;
 
-	string_i = 0;
-	store_i = -1;
-	start = 0;
-	num_of_strings = get_strings_count((char*)s, c);
+	initializer_variables(&str_i, &sps, &start);
+	num_of_strings = get_strings_count((char *)s, c);
 	store = ft_calloc(num_of_strings + 1, sizeof(char *));
 	if (store == 0)
 		return (0);
-	while (s[string_i] != 0)
-		if (s[string_i] != c)
+	while (s[str_i] != 0)
+	{
+		if (s[str_i] != c)
 		{
-			start = string_i;
-			while (s[string_i] != c && s[string_i] != 0)
-				string_i++;
-			store[store_i] = generate_string((char*)s + start, string_i - start, &store_i);
+			start = str_i;
+			while (s[str_i] != c && s[str_i] != 0)
+				str_i++;
+			store[sps] = gen_str((char *)s + start, str_i - start, &sps);
 		}
 		else
-			string_i++;
+			str_i++;
+	}
 	return (store);
 }
 
