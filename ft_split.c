@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 14:53:11 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:22:02 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**ft_split(char const *s, char c)
 	string_i = 0;
 	store_i = -1;
 	start = 0;
-	num_of_strings = get_strings_count(s, c);
+	num_of_strings = get_strings_count((char*)s, c);
 	store = ft_calloc(num_of_strings + 1, sizeof(char *));
 	if (store == 0)
 		return (0);
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 			start = string_i;
 			while (s[string_i] != c && s[string_i] != 0)
 				string_i++;
-			store[store_i] = generate_string(s + start, string_i - start, &store_i);
+			store[store_i] = generate_string((char*)s + start, string_i - start, &store_i);
 		}
 		else
 			string_i++;

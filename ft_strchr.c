@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:32:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 14:37:00 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:22:58 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if(*s == (char)c)
 		{
-			return (s);	
+			return ((char*)s);	
 		}
 		s++;
 	}
-	if (s == (char)c)
-		return (s);
+	if ((char)s == (char)c)
+		return ((char*)s);
 	else
 		return (0);
 }
