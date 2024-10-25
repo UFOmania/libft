@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:37:13 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 19:15:52 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:17:12 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,3 @@ int	ft_atoi(const char *str)
 	}
 	return (resault * sign);
 }
-
-// int main()
-// {
-// 	char s[] = "     123";
-// 	printf("mine:-%d-\norg :-%d-", ft_atoi(s),atoi(s));
-// }

@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:14:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 14:30:04 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:30:04 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	cs1 = (unsigned char *)s1;
 	cs2 = (unsigned char *)s2;
+	i = 0;
 	if (cs1 == 0 && cs2 == 0)
 		return (0);
 	while (i < n)

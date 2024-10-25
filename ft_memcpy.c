@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:31:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 14:31:05 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:30:57 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
 	i = 0;
+	if (s == 0 || d == 0)
+		return (0);
 	while (i < len)
 	{
 		d[i] = s[i];
@@ -28,10 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	}
 	return (dest);
 }
-
-// int main(){
-// 	char s[] = {"one punch"};
-// 	char d[] = {"........."};
-// 	ft_memcpy(d,s,4);
-// 	printf("%s",d);
-// }

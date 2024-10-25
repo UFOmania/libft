@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:42:20 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 15:58:21 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:12:55 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,3 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
-
-// static void add(unsigned int i, char *c)
-// {
-// 	(*c)++;
-// }
-
-// int main()
-// {
-// 	char s[] = "aaaaaaaaa";
-// 	ft_striteri(s,add);
-// 	printf("%s",s);
-// }

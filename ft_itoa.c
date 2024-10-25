@@ -6,18 +6,19 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:16:51 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 22:18:56 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:26:04 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	get_buffer_size(int number)
 {
 	int	index;
 
-	if (number < 0)
+	if (number == 0)
+		return (1);
+	else if (number < 0)
 	{
 		index = 1;
 		number *= -1;
@@ -32,7 +33,9 @@ static int	get_buffer_size(int number)
 
 static char	*converting(int nbr, char *dst, int size)
 {
-	if (nbr < 0)
+	if (nbr == -2147483648)
+		return ("-2147483648");
+	else if (nbr < 0)
 	{
 		nbr *= -1;
 		dst[0] = '-';
@@ -62,16 +65,4 @@ char	*ft_itoa(int n)
 	resault = converting(n, resault, buff_size - 1);
 	resault[buff_size] = '\0';
 	return (resault);
-}
-
-int main(){
-	char *s = ft_itoa(-123456);
-	int i = 0;
-	// while(i < 10)
-	// {
-	// 	printf("%p\n",s[i]);
-	// 	i++;
-	// }
-	printf("resault = %s\n",s);
-	free(s);
 }

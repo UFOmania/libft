@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:24:55 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 14:34:29 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:19:18 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	ft_bzero(void *s, size_t n)
 
 	i = 0;
 	if (n == 0)
-		return;
+		return ;
 	str = (unsigned char *)s;
-	while (i < n){
+	while (i < n)
+	{
 		str[i] = 0;
 		i++;
 	}

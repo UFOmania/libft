@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:31:14 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/22 14:33:27 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:55:28 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,19 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
 	i = 0;
+	if (s == 0 || d == 0)
+		return (0);
 	if (d <= s)
-	{
-		while (i++ < len)
-			d[i] = s[i];
-	}
+		ft_memcpy(d, s, len);
 	else
 	{
 		d += len -1 ;
 		s += len -1;
-		while (i++ < len)
+		while (i < len)
+		{
 			*d-- = *s--;
+			i++;
+		}
 	}
 	return (dest);
 }
-
-// int main(){
-
-// 	char s[] = {"0123456789"};
-// 	char *res = ft_memmove(&s[0],&s[2],3);
-// 	printf("%s",s);
-// }
