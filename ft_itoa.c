@@ -6,49 +6,48 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 18:16:51 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 11:26:04 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:32:11 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_buffer_size(int number)
+static int	get_buffer_size(long number)
 {
-	int	index;
+	int	i;
 
+	i = 0;
 	if (number == 0)
 		return (1);
-	else if (number < 0)
+	if (number < 0)
 	{
-		index = 1;
+		i++;
 		number *= -1;
 	}
 	while (number > 0)
 	{
-		number /= 10;
-		index++;
+		i++;
+		number *= 0.1;
 	}
-	return (index);
+	return (i);
 }
 
-static char	*converting(int nbr, char *dst, int size)
+static char	*converting(long nbr, char *dst, int size)
 {
-	if (nbr == -2147483648)
-		return ("-2147483648");
-	else if (nbr < 0)
+	int	i;
+
+	i = 0;
+	if (nbr < 0)
 	{
-		nbr *= -1;
 		dst[0] = '-';
+		i++;
+		nbr *= -1;
 	}
-	while (nbr > 9)
+	while (i <= size)
 	{
 		dst[size] = (nbr % 10) + '0';
-		nbr /= 10;
+		nbr *= 0.1;
 		size--;
-	}
-	if (nbr <= 9 && nbr >= 0)
-	{
-		dst[size] = nbr + '0';
 	}
 	return (dst);
 }
@@ -58,11 +57,14 @@ char	*ft_itoa(int n)
 	char	*resault;
 	int		buff_size;
 
-	buff_size = get_buffer_size(n);
+	buff_size = get_buffer_size((long)n);
 	resault = (char *)malloc((sizeof(char) * buff_size) + 1);
 	if (resault == 0)
 		return (0);
-	resault = converting(n, resault, buff_size - 1);
+	if (n != 0)
+		resault = converting((long)n, resault, buff_size - 1);
+	else
+		resault[0] = '0';
 	resault[buff_size] = '\0';
 	return (resault);
 }

@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:31:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 11:30:57 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/26 10:38:18 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
 	i = 0;
-	if (s == 0 || d == 0)
+	if (d == 0 && s == 0)
 		return (0);
 	while (i < len)
 	{

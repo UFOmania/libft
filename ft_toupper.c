@@ -19,3 +19,4 @@ int	ft_toupper(int c)
 	else
 		return (c);
 }
+

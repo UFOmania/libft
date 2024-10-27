@@ -6,13 +6,13 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:04:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 16:46:31 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:41:07 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	isaset(char c, char *set)
+static int	is_a_set(char c, char *set)
 {
 	int	i;
 
@@ -28,25 +28,15 @@ static int	isaset(char c, char *set)
 
 static int	starting(char *s, char *set, size_t start)
 {
-	while (s[start])
-	{
-		if (isaset(s[start], set))
-			start++;
-		else
-			break ;
-	}
+	while (s[start] && is_a_set(s[start], set))
+		start++;
 	return (start);
 }
 
 static int	ending(char *s, char *set, size_t end)
 {
-	while (s[end])
-	{
-		if (isaset(s[end], set))
-			end-- ;
-		else
-			break ;
-	}
+	while (s[end] && is_a_set(s[end], set))
+		end--;
 	return (end + 1);
 }
 
@@ -59,13 +49,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	start = starting((char *)s1, (char *)set, start);
-	end = strlen((char *)s1) - 1;
-	end = ending((char *)s1, (char *)set, end);
-	s = (ft_strlen((char *)s1) - start) - (ft_strlen((char *)s1) - end);
-	resault = (char *)malloc(s * sizeof(char) + 1);
-	if (resault == 0)
-		return (0);
-	ft_strlcpy(resault, (char *)s1 + start, s + 1);
+	end = ft_strlen((char *)s1) - 1;
+	if (ft_strlen(s1) == (int)start)
+	{
+		resault = (char *)ft_calloc(1, 1);
+		return (resault);
+	}
+	else
+	{
+		end = ending((char *)s1, (char *)set, end);
+		s = (ft_strlen((char *)s1) - start) - (ft_strlen((char *)s1) - end);
+		resault = (char *)malloc((s * sizeof(char)) + 1);
+		if (resault == 0)
+			return (0);
+		ft_strlcpy(resault, (char *)s1 + start, s + 1);
+	}
 	return (resault);
 }
 

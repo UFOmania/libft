@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:17:03 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 15:50:14 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:09:00 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
+	if (s != 0)
+		ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }

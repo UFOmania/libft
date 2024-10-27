@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:36:47 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/23 22:11:56 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:43:05 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	while (src[i] && i < size - 1)
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] != 0 && i < size - 1)
 	{
 		dst[i] = src[i];
 		i++;

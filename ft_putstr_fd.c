@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:17:03 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 15:52:02 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/26 10:11:12 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
+	if (s == 0)
+		return ;
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);
