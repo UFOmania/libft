@@ -37,8 +37,6 @@ SRC = 	ft_atoi.c\
 		ft_tolower.c\
 		ft_toupper.c
 
-.PHONY: all clean fclean re
-
 OBJ = $(SRC:.c=.o)
 LIB = libft.a
 
@@ -57,3 +55,5 @@ fclean: clean
 	$(RM) $(LIB)
 
 re: fclean all
+
+.PHONY: all clean fclean re

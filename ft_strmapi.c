@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:50:50 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/27 17:53:31 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:16:03 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*resault;
 
 	i = 0;
+	if (s == 0)
+		return (NULL);
 	s_size = ft_strlen(s);
 	resault = malloc((s_size * sizeof(char)) + 1);
 	if (resault == 0)

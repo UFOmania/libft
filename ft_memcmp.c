@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:14:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 10:59:44 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:03:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	cs1 = (unsigned char *)s1;
 	cs2 = (unsigned char *)s2;
 	i = 0;
-	if (cs1 == 0 && cs2 == 0)
-		return (0);
 	while (i < n)
 	{
 		if (cs1[i] != cs2[i])
@@ -34,11 +32,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 // int main()
 // {
-
 // 	char *s1 = "AAAAAA";
 // 	char *s2 = "";
 // 	int r1 = ft_memcmp(s1,s2,4);
-// 	int r2 = memcmp(s1,s2 ,4);
-
+// 	int r2 = memcmp(s1,s2 ,4)
 // 	printf("~%d~\n~%d~", r1,r2);
 // }

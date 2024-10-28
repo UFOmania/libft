@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:50:35 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 18:13:06 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:11:12 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (s == 0)
+		return (NULL);
 	if (start >= (unsigned int)ft_strlen(s))
 	{
 		sub = (char *)malloc(sizeof(char));

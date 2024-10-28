@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:04:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/27 13:41:07 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:16:14 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	s;
 
 	start = 0;
+	if (s1 == 0 || set == 0)
+		return (NULL);
 	start = starting((char *)s1, (char *)set, start);
 	end = ft_strlen((char *)s1) - 1;
 	if (ft_strlen(s1) == (int)start)

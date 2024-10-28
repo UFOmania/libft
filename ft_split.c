@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 17:02:14 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:40:48 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,14 @@ char	**ft_split(char const *s, char c)
 	int		num_of_strings;
 	int		start;
 
+	if (s == 0)
+		return (NULL);
 	initializer_variables(&str_i, &sps, &start);
 	num_of_strings = get_strings_count((char *)s, c);
 	store = ft_calloc(num_of_strings + 1, sizeof(char *));
 	if (store == 0)
 		return (0);
+	while (s[str_i] != 0)
 	while (s[str_i] != 0)
 	{
 		if (s[str_i] != c)
@@ -74,8 +77,7 @@ char	**ft_split(char const *s, char c)
 				str_i++;
 			store[sps] = gen_str((char *)s + start, str_i - start, &sps);
 		}
-		else
-			str_i++;
+		else str_i++;
 	}
 	return (store);
 }

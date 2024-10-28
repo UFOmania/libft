@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:42:20 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 16:33:10 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:09:51 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	i = 0;
+	if (s == 0 || f == 0)
+		return ;
 	while (s[i])
 	{
 		f(i, &s[i]);
