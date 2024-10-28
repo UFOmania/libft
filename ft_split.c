@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 12:40:48 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:01:34 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	**ft_split(char const *s, char c)
 	store = ft_calloc(num_of_strings + 1, sizeof(char *));
 	if (store == 0)
 		return (0);
-	while (s[str_i] != 0)
 	while (s[str_i] != 0)
 	{
 		if (s[str_i] != c)
