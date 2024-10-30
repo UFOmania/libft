@@ -38,13 +38,13 @@ SRC = 	ft_atoi.c\
 		ft_toupper.c
 
 OBJ = $(SRC:.c=.o)
-LIB = libft.a
+NAME= libft.a
 
-all: $(LIB)
+all: $(NAME)
 
-$(LIB): $(OBJ)
-	$(AR) $(LIB) $(OBJ)
-
+$(NAME): $(OBJ)
+	$(AR) $@ $(OBJ)
+	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -52,7 +52,7 @@ clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(LIB)
+	$(RM) libft.a
 
 re: fclean all
 

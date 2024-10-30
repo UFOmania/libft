@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 09:41:49 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 18:29:49 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:24:42 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,34 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	i = 0;
 	if (s1[0] == 0 && s2[0] != 0)
-		return ('\0' - (unsigned char)s2[0]);
+		return (0 - (unsigned char)s2);
 	if (s1[0] != 0 && s2[0] == 0)
-		return ((unsigned char)s1[0] - '\0');
+		return ((unsigned char)s2 - 0);
 	while (s1[i] && s2[i] && i < n)
 	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if ((unsigned char) s1[i] != (unsigned char) s2[i])
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 		i++;
 	}
 	return (0);
 }
 
+// int	ft_strncmp(const char *s1, const char *s2, size_t n)
+// {
+// 	size_t	i;
+// 	i = 0;
+// 	if (s1[0] == 0 && s2[0] != 0)
+// 		return ('\0' - (unsigned char)s2[0]);
+// 	if (s1[0] != 0 && s2[0] == 0)
+// 		return ((unsigned char)s1[0] - '\0');
+// 	while (s1[i] && s2[i] && i < n)
+// 	{
+// 		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+// 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 // int main()
 // {
 // 	printf("%d", ft_strncmp("zbc","azd",99));

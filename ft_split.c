@@ -6,11 +6,17 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 17:01:34 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:27:04 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	skip_chars(char *s, char c, int *str_i)
+{
+	while (s[*str_i] != c && s[*str_i] != 0)
+		(*str_i)++;
+}
 
 static int	get_strings_count(char *str, char c)
 {
@@ -23,9 +29,8 @@ static int	get_strings_count(char *str, char c)
 	{
 		if (str[i] != c)
 		{
+			skip_chars((char *)str, c, &i);
 			num++;
-			while (str[i] != c && str[i] != 0)
-				i++;
 		}
 		else
 			i++;
@@ -37,7 +42,7 @@ static char	*gen_str(char *s, int size, int *store_index)
 {
 	char	*tmp;
 
-	tmp = ft_calloc(size + 1, sizeof(char));
+	tmp = malloc(size + 1);
 	if (tmp == 0)
 		return (0);
 	ft_strlcpy(tmp, s, size + 1);
@@ -45,7 +50,7 @@ static char	*gen_str(char *s, int size, int *store_index)
 	return (tmp);
 }
 
-static void	initializer_variables(int *str_i, int *sps, int *start)
+static void	vars_init(int *str_i, int *sps, int *start)
 {
 	*str_i = 0;
 	*sps = -1;
@@ -56,15 +61,15 @@ char	**ft_split(char const *s, char c)
 {
 	char	**store;
 	int		str_i;
-	int		sps;
+	int		j;
 	int		num_of_strings;
 	int		start;
 
 	if (s == 0)
 		return (NULL);
-	initializer_variables(&str_i, &sps, &start);
+	vars_init(&str_i, &j, &start);
 	num_of_strings = get_strings_count((char *)s, c);
-	store = ft_calloc(num_of_strings + 1, sizeof(char *));
+	store = malloc(num_of_strings * sizeof(char *));
 	if (store == 0)
 		return (0);
 	while (s[str_i] != 0)
@@ -72,18 +77,18 @@ char	**ft_split(char const *s, char c)
 		if (s[str_i] != c)
 		{
 			start = str_i;
-			while (s[str_i] != c && s[str_i] != 0)
-				str_i++;
-			store[sps] = gen_str((char *)s + start, str_i - start, &sps);
+			skip_chars((char *)s, c, &str_i);
+			store[j] = gen_str((char *)s + start, str_i - start, &j);
 		}
-		else str_i++;
+		else
+			str_i++;
 	}
 	return (store);
 }
 
 // int main()
 // {
-// 	char **res = ft_split("--hello--hh-how can -I help-you------",'-');
+// 	char **res = ft_split("salut\0 1337\0 reda",'\0');
 // 	int i = 0;
 // 	while( res[i] != 0)
 // 	{
