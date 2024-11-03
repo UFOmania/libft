@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/03 22:06:39 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 23:52:51 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ static char	*custom_strdub(char *s, size_t len)
 	return (res);
 }
 
-static void	free_store(size_t size, char **store)
+static char	**free_store(int i, char **store)
 {
-	while (size - 1 >= 0)
+	while (i >= 0)
 	{
-		free(store[size]);
-		store[size] = NULL;
-		size--;
+		free(store[i]);
+		store[i] = NULL;
+		i--;
 	}
 	free(store);
-	store = NULL;
+	return (NULL);
 }
 
-static void	do_split(char **store, char *s, char c)
+static char	**do_split(char **store, char *s, char c, int size)
 {
 	size_t	start;
 	int		i;
@@ -65,24 +65,19 @@ static void	do_split(char **store, char *s, char c)
 	start = 0;
 	i = 0;
 	j = 0;
-	while (s[i])
+	while (j < size)
 	{
-		start = i;
-		if (s[i] != c)
-		{
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			store[j] = custom_strdub(s + start, i - start);
-			if (store[j] == NULL)
-			{
-				free_store(j, store);
-				return ;
-			}
-			j++;
-		}
-		else
+		while (s[i] == c)
 			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		store[j] = custom_strdub(s + start, i - start);
+		if (store[j] == NULL)
+			return (free_store(j - 1, store));
+		j++;
 	}
+	return (store);
 }
 
 char	**ft_split(char const *s, char c)
@@ -90,11 +85,13 @@ char	**ft_split(char const *s, char c)
 	char	**store;
 	size_t	size;
 
+	if (s == NULL)
+		return (NULL);
 	size = count_strings((char *)s, c);
 	store = (char **)malloc((size + 1) * sizeof(char *));
 	if (store == NULL)
 		return (NULL);
-	do_split(store, (char *)s, c);
+	store = do_split(store, (char *)s, c, size);
 	if (store != NULL)
 		store[size] = NULL;
 	return (store);
@@ -102,7 +99,7 @@ char	**ft_split(char const *s, char c)
 
 // int main()
 // {
-// 	char **s = ft_split("hello!",' ');
+// 	char **s = ft_split("hello ! i am you mother ?",' ');
 // 	int i = 0;
 // 	while(s[i])
 // 	{
