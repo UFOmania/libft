@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:43:10 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/25 16:30:43 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:17:34 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,27 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*res;
+	size_t	i;
 
-	res = 0;
-	if (*s == c)
-		res = (char *)s;
-	while (*s++)
+	i = 0;
+	res = NULL;
+	while (s[i] != '\0')
 	{
-		if (*s == c)
-			res = (char *)s;
+		if (s[i] == (char)c)
+			res = (char *)&s[i];
+		i++;
 	}
+	if ((char)c == s[i])
+		res = (char *)&s[i];
 	return (res);
 }
-
-// int main(){
-// 	char s[] = {"abcdefe"};
+// #include <stdio.h>
+// int main()
+// {
+// 	char s[] = {""};
 // 	char t = 'e';
-
-// 	char *res = ft_strrchr(s,t);
-// 	char *org =strrchr(s,t);
+// 	char *res = ft_strrchr("  ",0);
+// 	char *org =strrchr("  ",0);
 // 	// if(res == 0) 
-// 	printf("mine : %p\n org : %p",res,org );
+// 	printf("mine : %s\n org : %s",res,org );
 // }

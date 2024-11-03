@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:50:35 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 12:11:12 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 22:03:25 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,35 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
+	size_t	s_len;
 
 	i = 0;
-	if (s == 0)
+	if (s == NULL)
 		return (NULL);
-	if (start >= (unsigned int)ft_strlen(s))
+	s_len = ft_strlen(s);
+	if (start >= s_len || !s[0])
 	{
-		sub = (char *)malloc(sizeof(char));
-		if (sub == 0)
-			return (0);
+		sub = (char *)malloc(1);
+		if (sub == NULL)
+			return (NULL);
 		sub[0] = 0;
 		return (sub);
 	}
-	sub = (char *)malloc((len * sizeof(char)) + 1);
-	if (sub == 0)
-		return (0);
-	ft_strlcpy(sub, &s[start], len + 1);
+	if (len > s_len - start)
+		len = s_len - start;
+	sub = (char *)malloc((len + 1) * sizeof(char));
+	if (sub == NULL)
+		return (NULL);
+	while (s[start] && len-- > 0)
+		sub[i++] = s[start++];
+	sub[i] = 0;
 	return (sub);
 }
 
+// #include <stdio.h>
 // int main(){
-// 	char org[] = {"1234567"};
-// 	char *sub = ft_substr(org, 2, 4);
+// 	//char org[] = {"1234567"};
+// 	char *sub = ft_substr("", 1, 1);
 // 	printf("%s",sub);
 // 	free(sub);
 // }

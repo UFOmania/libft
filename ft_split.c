@@ -6,101 +6,107 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/30 13:27:04 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 22:06:39 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-static void	skip_chars(char *s, char c, int *str_i)
+static size_t	count_strings(char *s, char c)
 {
-	while (s[*str_i] != c && s[*str_i] != 0)
-		(*str_i)++;
-}
-
-static int	get_strings_count(char *str, char c)
-{
-	int	i;
-	int	num;
+	size_t	i;
 
 	i = 0;
-	num = 0;
-	while (str[i])
+	while (*s != '\0')
 	{
-		if (str[i] != c)
+		if (*s != c)
 		{
-			skip_chars((char *)str, c, &i);
-			num++;
+			while (*s != c && *s)
+				s++;
+			i++;
+		}
+		else
+			s++;
+	}
+	return (i);
+}
+
+static char	*custom_strdub(char *s, size_t len)
+{
+	char	*res;
+
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (res == 0)
+		return (NULL);
+	ft_strlcpy(res, s, len + 1);
+	return (res);
+}
+
+static void	free_store(size_t size, char **store)
+{
+	while (size - 1 >= 0)
+	{
+		free(store[size]);
+		store[size] = NULL;
+		size--;
+	}
+	free(store);
+	store = NULL;
+}
+
+static void	do_split(char **store, char *s, char c)
+{
+	size_t	start;
+	int		i;
+	int		j;
+
+	start = 0;
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		start = i;
+		if (s[i] != c)
+		{
+			while (s[i] != c && s[i] != '\0')
+				i++;
+			store[j] = custom_strdub(s + start, i - start);
+			if (store[j] == NULL)
+			{
+				free_store(j, store);
+				return ;
+			}
+			j++;
 		}
 		else
 			i++;
 	}
-	return (num);
-}
-
-static char	*gen_str(char *s, int size, int *store_index)
-{
-	char	*tmp;
-
-	tmp = malloc(size + 1);
-	if (tmp == 0)
-		return (0);
-	ft_strlcpy(tmp, s, size + 1);
-	(*store_index)++;
-	return (tmp);
-}
-
-static void	vars_init(int *str_i, int *sps, int *start)
-{
-	*str_i = 0;
-	*sps = -1;
-	*start = 0;
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**store;
-	int		str_i;
-	int		j;
-	int		num_of_strings;
-	int		start;
+	size_t	size;
 
-	if (s == 0)
+	size = count_strings((char *)s, c);
+	store = (char **)malloc((size + 1) * sizeof(char *));
+	if (store == NULL)
 		return (NULL);
-	vars_init(&str_i, &j, &start);
-	num_of_strings = get_strings_count((char *)s, c);
-	store = malloc(num_of_strings * sizeof(char *));
-	if (store == 0)
-		return (0);
-	while (s[str_i] != 0)
-	{
-		if (s[str_i] != c)
-		{
-			start = str_i;
-			skip_chars((char *)s, c, &str_i);
-			store[j] = gen_str((char *)s + start, str_i - start, &j);
-		}
-		else
-			str_i++;
-	}
+	do_split(store, (char *)s, c);
+	if (store != NULL)
+		store[size] = NULL;
 	return (store);
 }
 
 // int main()
 // {
-// 	char **res = ft_split("salut\0 1337\0 reda",'\0');
+// 	char **s = ft_split("hello!",' ');
 // 	int i = 0;
-// 	while( res[i] != 0)
+// 	while(s[i])
 // 	{
-// 		printf("the 0 reasult : ~%s~\n", res[i]);
+// 		printf("%s\n",s[i]);
 // 		i++;
 // 	}
-// 	//printf("the reasult : ~%s~\n", res[0]);
-// 	i = 0;
-// 	while(i<0){
-// 		free(res[i]);
-// 		i++;
-// 	}
-// 	free(res);
-// 	// printf("%d",allsplitpoints("d-hello-f-d" , '-'));
 // }

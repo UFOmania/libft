@@ -45,7 +45,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $@ $(OBJ)
 	
-%.o: %.c
+%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

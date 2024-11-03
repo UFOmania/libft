@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:16:14 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 23:04:15 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:42:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,28 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char	*hay;
-	char	*ndl;
 
+	if (needle[0] == '\0')
+		return ((char *)haystack);
 	i = 0;
-	j = 0;
-	hay = (char *)haystack;
-	ndl = (char *)needle;
-	if (len == 0 || ndl[0] == 0)
-		return (hay);
-	while (hay[i] && i < len)
+	while (haystack[i] && i < len)
 	{
-		while (hay[i] == ndl[j])
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j) < len)
 		{
-			if (ndl[j + 1] == 0)
-				return (&hay[i - j]);
-			i++;
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
 			j++;
 		}
 		i++;
-		j = 0;
 	}
-	return (0);
+	return (NULL);
 }
 
+// #include <stdio.h>
 // int main(){
 // 	char h[] = {"abcdefghijk"};
-// 	char n[] = {"sbc"};
-// 	char *r = strnstr(h,n,11);
+// 	char n[] = {""};
+// 	char *r = strnstr(h,n,0);
 // 	printf("%s",r);
 // }

@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:37:13 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 17:58:56 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:10:10 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ static int	handle_sign(const char *s, int index, int *sign)
 	return (index);
 }
 
-static int	handle_numbers(const char *s, int index, long long *res, int *max)
+static int	handle_numbers(const char *s, int index, long long *res)
 {
 	while (s[index] >= '0' && s[index] <= '9')
 	{
 		*res *= 10;
 		*res += (s[index] - '0');
 		index++;
-		*max += 1;
 	}
 	return (index);
 }
@@ -48,19 +47,17 @@ int	ft_atoi(const char *str)
 	int			i;
 	int			sign;
 	long long	result;
-	int			max;
 
 	i = 0;
 	sign = 1;
 	result = 0;
-	max = 0;
 	i = handle_white_spaces(str, i);
 	i = handle_sign(str, i, &sign);
-	i = handle_numbers(str, i, &result, &max);
+	i = handle_numbers(str, i, &result);
 	result *= sign;
-	if (max > 19 && sign == -1)
+	if (result < INT_MIN && sign == -1)
 		result = 0;
-	else if (max > 19 && sign == 1)
+	else if (result > INT_MAX && sign == 1)
 		result = -1;
 	return (result);
 }
