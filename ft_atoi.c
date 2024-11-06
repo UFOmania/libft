@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:37:13 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/03 13:10:10 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:53:54 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,15 @@ int	ft_atoi(const char *str)
 	i = handle_sign(str, i, &sign);
 	i = handle_numbers(str, i, &result);
 	result *= sign;
-	if (result < INT_MIN && sign == -1)
-		result = 0;
-	else if (result > INT_MAX && sign == 1)
+	if (result < INT_MIN)
 		result = -1;
+	else if (result > INT_MAX)
+		result = 0;
 	return (result);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("%d\n%d",ft_atoi("-0"),atoi("-0"));
+// }

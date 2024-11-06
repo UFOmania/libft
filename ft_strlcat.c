@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:58:54 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/29 22:18:22 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:26:16 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (dst_len + ft_strlen(src));
 }
 
-// int main()
-// {
-// 	char d[20] = {"abc\0"};
-// 	char d1[20] = {"abc\0"};make 
-// 	char s[] = "defghi";
-// 	strlcat(d,s,10);
-// 	ft_strlcat(d1,s,10);
-// 	printf("org :-%s-\nmine:-%s-",d, d1);
-// }
+#include <stdio.h>
+int main()
+{
+	char d[20] = {"abc\0"};
+	char d1[20] = {"abc\0"};
+	char s[] = "defghi";
+	//strlcat(NULL,s,10);
+	ft_strlcat(0,s,10);
+	printf("org :-%s-\nmine:-%s-",d, d1);
+}
