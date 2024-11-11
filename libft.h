@@ -6,13 +6,12 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:11:34 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/11 05:40:21 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:58:32 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>

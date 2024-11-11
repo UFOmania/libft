@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:31:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 10:38:18 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/12 00:30:08 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	i = 0;
 	if (d == 0 && s == 0)
 		return (0);
+	if (dest == src)
+		return (dest);
 	while (i < len)
 	{
 		d[i] = s[i];
