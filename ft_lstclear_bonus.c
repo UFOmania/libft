@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 11:16:14 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/09 10:05:03 by massrayb         ###   ########.fr       */
+/*   Created: 2024/11/10 00:35:33 by massrayb          #+#    #+#             */
+/*   Updated: 2024/11/11 05:34:07 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*tmp;
+	t_list	*head;
 
-	if (needle[0] == '\0')
-		return ((char *)haystack);
-	i = 0;
-	while (haystack[i] && i < len)
+	if (*lst == NULL || del == NULL)
+		return ;
+	head = *lst;
+	while (head)
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i]);
-			j++;
-		}
-		i++;
+		tmp = head;
+		head = head->next;
+		ft_lstdelone(tmp, del);
 	}
-	return (NULL);
+	*lst = NULL;
 }

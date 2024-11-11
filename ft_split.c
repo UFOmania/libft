@@ -6,12 +6,11 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:09:00 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/03 23:52:51 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:04:37 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 #include <string.h>
 
 static size_t	count_strings(char *s, char c)
@@ -96,14 +95,3 @@ char	**ft_split(char const *s, char c)
 		store[size] = NULL;
 	return (store);
 }
-
-// int main()
-// {
-// 	char **s = ft_split("hello ! i am you mother ?",' ');
-// 	int i = 0;
-// 	while(s[i])
-// 	{
-// 		printf("%s\n",s[i]);
-// 		i++;
-// 	}
-// }

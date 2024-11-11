@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:14:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 12:03:26 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:02:37 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// int main()
-// {
-// 	char *s1 = "AAAAAA";
-// 	char *s2 = "";
-// 	int r1 = ft_memcmp(s1,s2,4);
-// 	int r2 = memcmp(s1,s2 ,4)
-// 	printf("~%d~\n~%d~", r1,r2);
-// }

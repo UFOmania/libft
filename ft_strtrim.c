@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:04:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 12:16:14 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:03:03 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (resault);
 }
-
-// int main()
-// {
-// 	char *f = ft_strtrim("ab123ba","ba");
-// 	printf("%s",f);
-// 	free(f);
-// }

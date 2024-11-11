@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:39:41 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/06 12:20:13 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:02:45 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(resault + s1_len, s2, s2_len + 1);
 	return (resault);
 }
-
-// int main(){
-// 	char s1[] = {"abc"};
-// 	char s2[] = {"def"};
-// 	char *r = ft_strjoin(s1,s2);
-// 	ft_putstr_fd(r,1);
-// 	free(r);
-// }

@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:50:35 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/03 22:03:25 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:05:19 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = 0;
 	return (sub);
 }
-
-// #include <stdio.h>
-// int main(){
-// 	//char org[] = {"1234567"};
-// 	char *sub = ft_substr("", 1, 1);
-// 	printf("%s",sub);
-// 	free(sub);
-// }

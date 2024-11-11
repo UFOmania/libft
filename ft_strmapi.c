@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:50:50 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/28 12:16:03 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:02:55 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	resault[i] = 0;
 	return (resault);
 }
-
-// char *ff(unsigned int i , char c)
-// {
-// 	return c - 1;
-// }
-// int main()
-// {
-// 	char *s;
-// 	s = ft_strmapi("abd", ff);
-// 	printf("%p\n",s);
-// 	printf("%p",s[3]);
-// 	free(s);
-// }

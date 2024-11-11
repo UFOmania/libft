@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar -rc
+AR = ar -rcs
 RM = rm -f
 SRC = 	ft_atoi.c\
 		ft_bzero.c\
@@ -37,7 +37,18 @@ SRC = 	ft_atoi.c\
 		ft_tolower.c\
 		ft_toupper.c
 
+SRCB =	ft_lstnew_bonus.c\
+		ft_lstlast_bonus.c\
+		ft_lstsize_bonus.c\
+		ft_lstadd_front_bonus.c\
+		ft_lstadd_back_bonus.c\
+		ft_lstdelone_bonus.c\
+		ft_lstclear_bonus.c\
+		ft_lstiter_bonus.c\
+		ft_lstmap_bonus.c
 OBJ = $(SRC:.c=.o)
+OBJB = $(SRCB:.c=.o)
+
 NAME= libft.a
 
 all: $(NAME)
@@ -48,8 +59,11 @@ $(NAME): $(OBJ)
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(OBJB)
+	$(AR) $(NAME) $(OBJB)
+
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJB)
 
 fclean: clean
 	$(RM) libft.a

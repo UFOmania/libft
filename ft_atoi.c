@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:37:13 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/04 11:53:54 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/11 05:31:04 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,39 +31,38 @@ static int	handle_sign(const char *s, int index, int *sign)
 	return (index);
 }
 
-static int	handle_numbers(const char *s, int index, long long *res)
+static long	handle_numbers(const char *s, int index, int sign)
 {
+	long	tmp;
+	long	res;
+
+	tmp = 0;
+	res = 0;
 	while (s[index] >= '0' && s[index] <= '9')
 	{
-		*res *= 10;
-		*res += (s[index] - '0');
+		tmp = res;
+		res *= 10;
+		res += (s[index] - '0');
+		if (res < tmp && sign == 1)
+			return (-1);
+		if (res < tmp && sign == -1)
+			return (0);
 		index++;
 	}
-	return (index);
+	return (res * sign);
 }
 
 int	ft_atoi(const char *str)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	int		i;
+	int		sign;
+	long	result;
 
 	i = 0;
 	sign = 1;
 	result = 0;
 	i = handle_white_spaces(str, i);
 	i = handle_sign(str, i, &sign);
-	i = handle_numbers(str, i, &result);
-	result *= sign;
-	if (result < INT_MIN)
-		result = -1;
-	else if (result > INT_MAX)
-		result = 0;
+	result = handle_numbers(str, i, sign);
 	return (result);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	printf("%d\n%d",ft_atoi("-0"),atoi("-0"));
-// }

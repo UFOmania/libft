@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:43:10 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/03 14:17:34 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/09 09:59:55 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,3 @@ char	*ft_strrchr(const char *s, int c)
 		res = (char *)&s[i];
 	return (res);
 }
-// #include <stdio.h>
-// int main()
-// {
-// 	char s[] = {""};
-// 	char t = 'e';
-// 	char *res = ft_strrchr("  ",0);
-// 	char *org =strrchr("  ",0);
-// 	// if(res == 0) 
-// 	printf("mine : %s\n org : %s",res,org );
-// }
