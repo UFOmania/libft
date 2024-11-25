@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:04:40 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/09 10:03:03 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:05:18 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	start = starting((char *)s1, (char *)set, start);
 	end = ft_strlen((char *)s1) - 1;
-	if (ft_strlen(s1) == (int)start)
+	if (ft_strlen(s1) == start)
 	{
 		resault = (char *)ft_calloc(1, 1);
 		return (resault);
@@ -63,7 +63,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s = (ft_strlen((char *)s1) - start) - (ft_strlen((char *)s1) - end);
 		resault = (char *)malloc((s * sizeof(char)) + 1);
 		if (resault == 0)
-			return (0);
+			return (NULL);
 		ft_strlcpy(resault, (char *)s1 + start, s + 1);
 	}
 	return (resault);

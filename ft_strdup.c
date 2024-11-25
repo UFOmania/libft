@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:51:36 by massrayb          #+#    #+#             */
-/*   Updated: 2024/10/26 17:21:01 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/17 10:04:56 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	p = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
 	if (p == 0)
-		return (0);
+		return (NULL);
 	while (s[i])
 	{
 		p[i] = s[i];

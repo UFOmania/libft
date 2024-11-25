@@ -6,7 +6,7 @@
 /*   By: massrayb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 09:56:23 by massrayb          #+#    #+#             */
-/*   Updated: 2024/11/11 05:40:04 by massrayb         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:03:13 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (str[i] == (unsigned char)c)
-			return ((void *)&str[i]);
+			return (&str[i]);
 		i++;
 	}
-	return ((void *)0);
+	return (NULL);
 }
